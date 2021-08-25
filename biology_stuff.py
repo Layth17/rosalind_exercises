@@ -49,10 +49,21 @@ def Complementing_Strand_of_DNA(DNA: str = "AAAACCCGGT"):
 
   return None
 
-def fib(n: int):
+def recursive_fib(n: int):
   if n == 0: return 0
   elif n == 1: return 1
   else: return fib(n - 1) + fib(n - 2)
+
+def iterative_fib(n: int):
+  # -------------- iterative solution
+  n0, n1, nth = 1, 0, 0 # starting terms
+  for _ in range(n, 0, -1):
+    # count fibonacci term
+    nth =  n1 + n0
+    # update previous terms
+    n0 = n1
+    n1 = nth
+  return nth
 
 def Fibonacci_Rabbits(n: int = 30, k: int = 5, i: int = 1):
   # with i = 1, n = 5, k = 3: the answer is 19 pairs of rabits after 5 months
@@ -75,13 +86,13 @@ def Fibonacci_Rabbits(n: int = 30, k: int = 5, i: int = 1):
   # Fn = int((math.pow(Phi, n) - (math.pow(-1, n)/math.pow(Phi, n))) / math.sqrt(5))
 
   # -------------- recursive func
-  # print(fib(n) * i)
+  # print(recursive_fib(n) * i)
 
   # -------------- iterative solution
   n0, n1, nth = 0, 1, 0 # starting terms
   while(n > 1):
     # count fibonacci term
-    nth = (n0 * k) + n1
+    nth =  n1 + (n0 * k)
     # update previous terms
     n0 = n1
     n1 = nth
@@ -279,6 +290,22 @@ def consensus_and_profile(fasta_file: str = "some_file2.fasta"):
 
   return None
 
+def mortal_fibonacchi_rabbits(m: int = 6, n: int = 6, k: int = 1, i: int = 1):
+  # m for months / terms
+  # n for life expectency, only applicable if mortal
+  # k for litter produced per mating 
+  # i for num of initial generations. Usually '1'
+
+  #       1,  1, 2, 3, 5, 8, 13, 21, 34, 55
+  # n=3   [1, 1, 2, 2, 3, 4, 5, 7, 9, 12]        f(n) = f(n-2) + f(n-3)
+  # n=4   [1, 1, 2, 3, 4, 6, 9, 13, 19, 28]      f(n) = f(n-2) + f(n-3) + f(n-4)
+  # n=5   [1, 1, 2, 3, 5, 7, 11, 17, 26, 40]     f(n) = f(n-2) + f(n-3) + f(n-4) + f(n-5)
+  # n=6   [1, 1, 2, 3, 5, 8, 12, 19, 30, 47]     f(n) = f(n-2) + f(n-3) + f(n-4) + f(n-5) + f(n-6)
+  # n=7   [1, 1, 2, 3, 5, 8, 13, 20, 32, 51]     f(n) = f(n-2) + f(n-3) + f(n-4) + f(n-5) + f(n-6) + f(n-7)
+
+
+  return None
+
 def printDictionary(dictionary: Dict):
   print()
   # prints a dictionary with *function* values
@@ -301,7 +328,8 @@ options: Dict = {
   '07': Mendel_First_Law,
   '08': Translating_RNA_into_Protein,
   '09': finding_motif_in_DNA,
-  '10': consensus_and_profile
+  '10': consensus_and_profile,
+  '11': mortal_fibonacchi_rabbits
 }
 
 def main():
