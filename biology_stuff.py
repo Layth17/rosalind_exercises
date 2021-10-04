@@ -303,7 +303,17 @@ def mortal_fibonacchi_rabbits(m: int = 6, n: int = 6, k: int = 1, i: int = 1):
   # n=6   [1, 1, 2, 3, 5, 8, 12, 19, 30, 47]     f(n) = f(n-2) + f(n-3) + f(n-4) + f(n-5) + f(n-6)
   # n=7   [1, 1, 2, 3, 5, 8, 13, 20, 32, 51]     f(n) = f(n-2) + f(n-3) + f(n-4) + f(n-5) + f(n-6) + f(n-7)
 
+  population = [1, 1]
+  for i in range(2, m, 1):
+    # if we are less than life expectancy, i < n, normal fib
+    aux = population[i - 1] + population[i - 2]
+    # when we equal life expectancy, subtract 1
+    if (i == n): aux = aux - 1
+    # when we above life expectancy, we add the terms following the above idea
+    if (i > n): aux = aux - population[i - n - 1]
+    population.append[aux]
 
+  print(population[-1])
   return None
 
 def printDictionary(dictionary: Dict):
