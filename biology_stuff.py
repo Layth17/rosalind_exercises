@@ -311,7 +311,7 @@ def mortal_fibonacchi_rabbits(m: int = 6, n: int = 6, k: int = 1, i: int = 1):
     if (i == n): aux = aux - 1
     # when we above life expectancy, we add the terms following the above idea
     if (i > n): aux = aux - population[i - n - 1]
-    population.append[aux]
+    population.append(aux)
 
   print(population[-1])
   return None
